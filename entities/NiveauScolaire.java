@@ -1,7 +1,6 @@
 package school.entities;
 
 import java.util.Collection;
-import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,18 +16,14 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
-public class Annee {
+public class NiveauScolaire {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotNull
 	private String designation;
-	@NotNull 
-	private Date dateDebut;
-	@NotNull
-	private Date dateFin;
 	
-	@ManyToMany(mappedBy = "annees",fetch = FetchType.LAZY)
-	private Collection<NiveauScolaire> niveauxScolaires;
+	@ManyToMany(fetch = FetchType.LAZY)
+	private Collection<Annee> annees;
 }
